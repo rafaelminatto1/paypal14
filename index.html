@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Carrinho de Compras</title>
+  <script src="https://www.paypal.com/sdk/js?client-id=AQkAi_i8fD3X9vdHjHJh7atGleTktPSboQISmvEMdwWk6-2h3rYm1mdWFzi385Ijx89DJLzD2DWvxyrR"></script>
+  <script src="script.js"></script>
+</head>
+<body>
+  <h1>Carrinho de Compras</h1>
+
+  <h2>Produto</h2>
+  <p>Nome do produto: Item1</p>
+  <p>Número do item: 123456</p>
+  <p>Preço: R$ 99,99</p>
+
+  <h2>Informações do Comprador</h2>
+  <form id="checkout-form">
+    <label for="first-name">Nome:</label>
+    <input type="text" id="first-name" name="first-name" required><br>
+
+    <label for="last-name">Sobrenome:</label>
+    <input type="text" id="last-name" name="last-name" required><br>
+
+    <label for="email">E-mail:</label>
+    <input type="email" id="email" name="email" required><br>
+
+    <label for="phone">Telefone:</label>
+    <input type="tel" id="phone" name="phone" required><br>
+
+    <label for="address-line1">Endereço 1:</label>
+    <input type="text" id="address-line1" name="address-line1" required><br>
+
+    <label for="address-line2">Endereço 2:</label>
+    <input type="text" id="address-line2" name="address-line2"><br>
+
+    <label for="state">Estado:</label>
+    <input type="text" id="state" name="state" required><br>
+
+    <label for="postal-code">CEP:</label>
+    <input type="text" id="postal-code" name="postal-code" required><br>
+
+    <label for="country">País:</label>
+    <input type="text" id="country" name="country" required value="Estados Unidos" readonly><br>
+
+    <div id="paypal-button-container"></div>
+  </form>
+</body>
+</html>
