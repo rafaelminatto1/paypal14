@@ -10,12 +10,10 @@ const accessTokenEndpoint = 'https://api.paypal.com/v1/oauth2/token';
 
 let accessToken = '';
 
-// Rota para autenticar e obter o token de acesso do PayPal API
+// Route to authenticate and obtain PayPal API access token
 app.get('/authenticate', async (req, res) => {
   try {
-    const response = await axios.post('https://api.paypal.com/v1/oauth2/token', {
-      grant_type: 'client_credentials'
-    }, {
+    const response = await axios.post('https://api.paypal.com/v1/oauth2/token', 'grant_type=client_credentials', {
       auth: {
         username: clientId,
         password: clientSecret
@@ -26,22 +24,61 @@ app.get('/authenticate', async (req, res) => {
     });
 
     accessToken = response.data.access_token;
-    res.send('Autenticação bem-sucedida. Token de acesso obtido.');
+    res.send('Authentication successful. Access token obtained.');
   } catch (error) {
-    console.error('Erro ao autenticar com o PayPal:', error.message);
-    res.status(500).send('Erro ao autenticar com o PayPal.');
+    console.error('Error authenticating with PayPal:', error.message);
+    res.status(500).send('Error authenticating with PayPal.');
   }
 });
 
-// Rota para criar uma transação e retornar o ID da transação
+// Route to create a transaction and return the transaction ID
 app.get('/create-transaction', async (req, res) => {
   try {
+    const buyerName = req.query.buyerName;
+    const buyerEmail = req.query.buyerEmail;
+    const buyerPhone = req.query.buyerPhone;
+    const buyerAddressLine1 = req.query.buyerAddressLine1;
+    const buyerAddressLine2 = req.query.buyerAddressLine2;
+    const buyerState = req.query.buyerState;
+    const buyerPostalCode = req.query.buyerPostalCode;
+    const buyerCountry = req.query.buyerCountry;
+
     const response = await axios.post('https://api.paypal.com/v2/checkout/orders', {
       intent: 'CAPTURE',
       purchase_units: [{
         amount: {
-          currency_code: 'USD',
+          currency_code: 'BRL',
           value: '99.99'
+        },
+        shipping: {
+          name: {
+            full_name: buyerName
+          },
+          address: {
+            address_line_1: buyerAddressLine1,
+            address_line_2: buyerAddressLine2,
+            admin_area_1: buyerState,
+            postal_code: buyerPostalCode,
+            country_code: buyerCountry
+          }
+        },
+        payer: {
+          name: {
+            given_name: buyerName
+          },
+          email_address: buyerEmail,
+          phone: {
+            phone_number: {
+              national_number: buyerPhone
+            }
+          },
+          address: {
+            address_line_1: buyerAddressLine1,
+            address_line_2: buyerAddressLine2,
+            admin_area_1: buyerState,
+            postal_code: buyerPostalCode,
+            country_code: buyerCountry
+          }
         }
       }]
     }, {
@@ -52,10 +89,10 @@ app.get('/create-transaction', async (req, res) => {
     });
 
     const orderId = response.data.id;
-    res.send(`Transação criada. ID da transação: ${orderId}`);
+    res.send(`Transaction created. Transaction ID: ${orderId}`);
   } catch (error) {
-    console.error('Erro ao criar a transação:', error.message);
-    res.status(500).send('Erro ao criar a transação.');
+    console.error('Error creating transaction:', error.message);
+    res.status(500).send('Error creating transaction.');
   }
 });
 
