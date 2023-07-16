@@ -99,5 +99,5 @@ app.get('/create-transaction', async (req, res) => {
 app.use(express.static('./'));
 
 app.listen(3000, () => {
-  console.log('Servidor iniciado em http://localhost:3000');
+  console.log('Servidor iniciado em na porta   3000');
 });

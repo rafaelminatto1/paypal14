@@ -4,7 +4,10 @@
   <title>Carrinho de Compras</title>
   <script src="https://www.paypal.com/sdk/js?client-id=AQkAi_i8fD3X9vdHjHJh7atGleTktPSboQISmvEMdwWk6-2h3rYm1mdWFzi385Ijx89DJLzD2DWvxyrR&currency=BRL"></script>
   <script src="script.js"></script>
-</head>
+  <link rel="stylesheet" href="style.css">
+  <script></script>
+  
+  </head>
 <body>
     
   <h1>Carrinho de Compras</h1>
@@ -35,12 +38,17 @@
     <input type="text" id="buyerState" name="buyerState" required><br>
 
     <label for="buyerPostalCode">CEP:</label>
-    <input type="text" id="buyerPostalCode" name="buyerPostalCode" required><br>
+    <input type="text" id="buyerPostalCode" onKeyUp="validateInput()" name="buyerPostalCode" required><br>
+    <br>
+    <div id="msg" ></div>
 
     <label for="buyerCountry">País:</label>
     <input type="text" id="buyerCountry" name="buyerCountry" required value="BR"><br>
 
     <div id="paypal-button-container"></div>
   </form>
+  
+
+  
 </body>
 </html>
