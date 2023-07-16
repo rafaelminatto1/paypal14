@@ -1,9 +1,16 @@
 <!DOCTYPE html>
+<html lang="en-US"></html>
+
 <html>
 <head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Carrinho de Compras</title>
   <script src="https://www.paypal.com/sdk/js?client-id=AQkAi_i8fD3X9vdHjHJh7atGleTktPSboQISmvEMdwWk6-2h3rYm1mdWFzi385Ijx89DJLzD2DWvxyrR&currency=BRL"></script>
   <script src="script.js"></script>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
   <link rel="stylesheet" href="style.css">
   <script></script>
   
@@ -13,8 +20,8 @@
   <h1>Carrinho de Compras</h1>
 
   <h2>Produto</h2>
-  <p>Nome do produto: Item1</p>
-  <p>Número do item: 123456</p>
+  <p>Nome do produto: Airdots</p>
+  <p>Número do item: 256</p>
   <p>Preço: R$ 99,99</p>
 
   <h2>Informações do Comprador</h2>
@@ -38,9 +45,10 @@
     <input type="text" id="buyerState" name="buyerState" required><br>
 
     <label for="buyerPostalCode">CEP:</label>
-    <input type="text" id="buyerPostalCode" onKeyUp="validateInput()" name="buyerPostalCode" required><br>
+    <input type="text" id="buyerPostalCode" onKeyUp="validateInput()" name="buyerPostalCode" required><div id="msg" ></div>
     <br>
-    <div id="msg" ></div>
+    
+    
 
     <label for="buyerCountry">País:</label>
     <input type="text" id="buyerCountry" name="buyerCountry" required value="BR"><br>
@@ -48,7 +56,7 @@
     <div id="paypal-button-container"></div>
   </form>
   
-
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
   
 </body>
 </html>
