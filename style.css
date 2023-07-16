@@ -1,0 +1,10 @@
+body{
+    font-family:sans-serif, Arial, Helvetica;
+    padding:2rem;
+  }
+  
+  #msg
+  {
+    margin-top:0.5rem;
+    font-size:0.8rem;
+  }
